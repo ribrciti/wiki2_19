@@ -4,12 +4,12 @@
 
  
 <% @articles.each do |article| %>
-  <h4>
+  <h5>
     <%= link_to article.title, article_path(article.id) %>:
-    <%= article.body.first(32) %>...    
-    <%= link_to 'Edit', edit_article_path(article) %>
-    <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>     
-  </h4>
+    <%= article.body.first(35) %>...    
+    <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-default btn-primary'  %>
+    <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-danger' %>     
+  </h5>
 
   <h7>
     <%= article.image_url %>
@@ -19,7 +19,5 @@
  
 
 
-<br>
 
-<%= link_to 'New Article', new_article_path %>  
      
