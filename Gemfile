@@ -15,7 +15,7 @@ gem 'jbuilder', '~> 2.5'
 
 
 gem 'devise', '~> 4.6', '>= 4.6.1'
-gem 'bootstrap', '~> 4.3', '>= 4.3.1'
+# 'bootstrap', '~> 4.3', '>= 4.3.1'
 
 
 gem 'bootsnap', '>= 1.1.0', require: false

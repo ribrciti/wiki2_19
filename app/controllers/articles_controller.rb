@@ -4,6 +4,9 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+      if current_user.present?
+        @current_user = current_user.email
+      end
   end
 
   def show
