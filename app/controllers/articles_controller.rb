@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @current_user = current_user.email
   end
 
   def edit
