@@ -2,11 +2,17 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
-  def index
-    @articles = Article.all
-      if current_user.present?
-        @current_user = current_user.email
-      end
+  def index   
+    if params[:category].blank?
+      @articles = Article.all      
+    else
+      @category_id = Category.find_by(name: params[:category]).id
+      @articles = Article.where(category_id: @cagegory_id)
+    end
+
+    if current_user.present?
+      @current_user_email = current_user.email
+    end
   end
 
   def show
@@ -60,6 +66,6 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:title, :body, :image_url)
+      params.require(:article).permit(:title, :body, :image_url, :category_id)
     end
 end
