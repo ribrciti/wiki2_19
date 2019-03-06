@@ -1,22 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<h1>All Articles</h1>
+<% if request.original_url.split('=').last.include? '/' %>
+  <h1>All Articles (<%= @articles_number %>) </h1>
+  <br>
+<% else %>
+  <h1>All <%= request.original_url.split('=').last.pluralize %> (<%= @articles_number %>)</h1>
+  <br>
+<% end %>
 
  
 <% @articles.each do |article| %>
-  <h5>
-    <%= link_to article.title, article_path(article.id) %>:
-    <%= article.body.first(35) %>...    
-    <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-default btn-primary'  %>
-    <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-danger' %>     
-  </h5>
-
-  <h7>
-    <%= article.image_url %>
-  </h7>
-  <hr>
+	<h4>
+		<%= image_tag(article.image_url, width: 50, height: 50) %>
+		<%= link_to article.title, article %>
+	</h4>
+  
+  <p>
+  	<%= truncate(article.body, length: 175) %>
+  	
+  </p>
 <% end %>
- 
 
 
 

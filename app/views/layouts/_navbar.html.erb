@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"><img src="assets/logo.png"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">  
+    <ul class="navbar-nav">
+    <% if user_signed_in? %>
+        <li class="nav-item active">      
+        <a class="nav-link" href="#"><%= link_to "New Article", new_article_path %><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">User:  <%= @current_user_email %></a>
+      </li>
+  <% else %>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><%= link_to "Login", new_user_session_path %></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" ><%= link_to "Signup", new_user_registration_path %></a>
+      </li>
+ <% end %>
+    </ul>
+  </div>
+</nav>

@@ -4,15 +4,18 @@ class ArticlesController < ApplicationController
 
   def index   
     if params[:category].blank?
-      @articles = Article.all      
+      @articles = Article.all        
     else
       @category_id = Category.find_by(name: params[:category]).id
-      @articles = Article.where(category_id: @cagegory_id)
+      @articles = Article.where(category_id: @category_id)
     end
+
+    @articles_number = @articles.count
 
     if current_user.present?
       @current_user_email = current_user.email
     end
+
   end
 
   def show
@@ -20,7 +23,7 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
-    @current_user = current_user.email
+    @current_user_email = current_user.email
   end
 
   def edit
