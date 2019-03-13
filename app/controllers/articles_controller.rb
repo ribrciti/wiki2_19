@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :current_user_present, only: [:index, :show]
 
   def index   
     if params[:category].blank?
@@ -10,15 +11,10 @@ class ArticlesController < ApplicationController
       @articles = Article.where(category_id: @category_id)
     end
 
-    @articles_number = @articles.count
-
-    if current_user.present?
-      @current_user_email = current_user.email
-    end
-
+      @articles_number = @articles.count
   end
 
-  def show
+  def show    
   end
 
   def new

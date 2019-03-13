@@ -17,6 +17,7 @@
   
   <p>
   	<%= truncate(article.body, length: 175) %>
+    Article by:  <%= @current_user_email %>
   	
   </p>
 <% end %>
