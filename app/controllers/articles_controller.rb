@@ -14,12 +14,14 @@ class ArticlesController < ApplicationController
       @articles_number = @articles.count
   end
 
-  def show    
+  def show     
+           
   end
 
   def new
     @article = Article.new
     @current_user_email = current_user.email
+
   end
 
   def edit
@@ -60,6 +62,7 @@ class ArticlesController < ApplicationController
   end
 
   private
+
     def set_article
       @article = Article.find(params[:id])
     end
@@ -67,4 +70,11 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :body, :image_url, :category_id)
     end
+
+    def current_user_present
+    if current_user.present?
+      @current_user_email = current_user.email
+      @current_user_username = current_user.username
+    end
+  end
 end
