@@ -16,7 +16,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise', '~> 4.6', '>= 4.6.1'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
-
+gem 'activeadmin'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
